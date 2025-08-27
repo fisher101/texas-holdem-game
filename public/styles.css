@@ -1,0 +1,2415 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 加载屏幕 */
+#loading-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.logo h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.logo p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 40px;
+}
+
+.join-form {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 300px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+}
+
+.form-group input::placeholder {
+    color: #666;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 10px 20px; /* 从12px 24px减少到10px 20px */
+    border: none;
+    border-radius: 8px;
+    font-size: 14px; /* 从16px减少到14px */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,107,107,0.6);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #6c757d, #868e96);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #28a745, #34ce57);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, #ffc107, #ffcd39);
+    color: #333;
+}
+
+.btn-info {
+    background: linear-gradient(45deg, #17a2b8, #1fc8db);
+    color: white;
+}
+
+.btn-small {
+    padding: 6px 12px; /* 从8px 16px减少到6px 12px */
+    font-size: 12px; /* 从14px减少到12px */
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 快速文案 */
+.quick-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* 房间列表 */
+.room-list-section {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.room-list-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #ffd700;
+}
+
+.room-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.room-item {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.room-item:hover {
+    background: rgba(255,255,255,0.25);
+    border-color: #ffd700;
+    transform: translateY(-2px);
+}
+
+.room-id {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 8px;
+}
+
+.room-players {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    opacity: 0.9;
+}
+
+.room-status {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.room-status.waiting {
+    background: rgba(52, 152, 219, 0.8);
+}
+
+.room-status.playing {
+    background: rgba(46, 204, 113, 0.8);
+}
+
+.no-rooms {
+    text-align: center;
+    opacity: 0.7;
+    font-style: italic;
+    padding: 20px;
+}
+
+.quick-actions h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.preset-messages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    max-width: 800px;
+}
+
+.preset-btn {
+    padding: 10px 15px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.preset-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
+/* 游戏主界面 */
+#game-screen {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    height: 100vh;
+    gap: 10px;
+    padding: 10px;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0c5460, #1a8a99);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* 顶部信息栏 */
+.top-info {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.pot-info, .current-bet {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.game-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.game-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.label {
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* 扑克桌面 */
+.poker-table {
+    flex: 1;
+    position: relative;
+    background: 
+        radial-gradient(ellipse at center, #1a5f1a 0%, #0d4f0d 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+    border-radius: 50%;
+    margin: 20px;
+    border: 5px solid #8B4513;
+    box-shadow: 
+        inset 0 0 50px rgba(0,0,0,0.5),
+        0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* 社区牌区域 */
+.community-cards {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid #ffd700;
+}
+
+.cards-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.stage-indicator {
+    background: rgba(0,0,0,0.9);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #ffd700;
+    border: 1px solid #ffd700;
+}
+
+/* 卡牌样式 */
+.card {
+    width: 50px;
+    height: 70px;
+    background: linear-gradient(145deg, #ffffff, #f8f8f8);
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    margin: 2px;
+    box-shadow: 
+        0 4px 12px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 0 rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    font-family: 'Times New Roman', serif;
+}
+
+/* 牌面内容容器 */
+.card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 4px;
+}
+
+/* 主要信息区（左上角） */
+.card-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 2;
+    line-height: 0.9;
+}
+
+/* 点数样式 */
+.card-rank {
+    font-size: 1.5em; /* 从1.2em增加到1.5em */
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+}
+
+/* 花色样式 */
+.card-suit {
+    font-size: 1.3em; /* 从1em增加到1.3em */
+    line-height: 1;
+    text-align: center;
+    margin-top: 3px; /* 从1px增加到3px，增加间距 */
+}
+
+/* 中央装饰花色 */
+.card-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    opacity: 0.08;
+    font-weight: bold;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* 红色花色 */
+.card.red .card-rank,
+.card.red .card-suit,
+.card.red .card-center {
+    color: #dc3545;
+}
+
+/* 黑色花色 */
+.card.black .card-rank,
+.card.black .card-suit,
+.card.black .card-center {
+    color: #333;
+}
+
+/* 卡牌光泽效果 */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    transform: rotate(45deg);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.card.empty {
+    background: 
+        linear-gradient(45deg, #1a365d 0%, #2d5a87 25%, #1a365d 50%, #2d5a87 75%, #1a365d 100%),
+        radial-gradient(circle at 50% 50%, #4a90c2 0%, #2d5a87 50%, #1a365d 100%);
+    background-size: 20px 20px, 100% 100%;
+    border: 2px solid #0f2942;
+    color: transparent;
+    position: relative;
+    animation: cardBackShimmer 3s ease-in-out infinite;
+}
+
+.card.empty::after {
+    content: '♠♥♦♣';
+    position: absolute;
+    font-size: 16px;
+    color: rgba(255,255,255,0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: -2px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+@keyframes cardBackShimmer {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.card.red {
+    color: #e74c3c;
+    text-shadow: 0 1px 2px rgba(231,76,60,0.3);
+}
+
+.card.black {
+    color: #2c3e50;
+    text-shadow: 0 1px 2px rgba(44,62,80,0.3);
+}
+
+/* 卡牌内容布局 */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 2px;
+    position: relative;
+}
+
+.card-rank {
+    font-size: 20px; /* 从18px增加到20px */
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.card-suit {
+    font-size: 24px; /* 从20px增加到24px */
+    line-height: 1;
+    margin-top: 3px; /* 从1px增加到3px，增加间距 */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+}
+
+/* 简化角标 - 只在左上角显示 */
+.card-content::before {
+    content: attr(data-rank) attr(data-suit);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 7px;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.6;
+}
+
+/* 不同尺寸的卡牌 */
+.card.large {
+    width: 80px;
+    height: 112px;
+    font-size: 18px;
+    border-width: 3px;
+}
+
+.card.large .card-rank {
+    font-size: 26px; /* 从22px增加到26px */
+}
+
+.card.large .card-suit {
+    font-size: 30px; /* 从26px增加到30px */
+    margin-top: 5px; /* 从4px增加到5px，增加间距 */
+}
+
+.card.medium {
+    width: 60px;
+    height: 84px;
+    font-size: 14px;
+}
+
+.card.medium .card-rank {
+    font-size: 18px; /* 从16px增加到18px */
+}
+
+.card.medium .card-suit {
+    font-size: 22px; /* 从20px增加到22px */
+    margin-top: 3px; /* 从2px增加到3px，增加间距 */
+}
+
+.card.small {
+    width: 40px;
+    height: 56px;
+}
+
+.card.small .card-content {
+    padding: 2px;
+}
+
+.card.small .card-rank {
+    font-size: 1.1em; /* 从0.9em增加到1.1em */
+}
+
+.card.small .card-suit {
+    font-size: 1.0em; /* 从0.8em增加到1.0em */
+    margin-top: 2px; /* 增加间距 */
+}
+
+.card.small .card-center {
+    font-size: 2em;
+}
+
+.card:hover:not(.empty) {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* 特殊卡牌效果 */
+.card.winner {
+    animation: cardWin 2s ease-in-out infinite;
+    border-color: #f1c40f;
+    box-shadow: 
+        0 0 20px rgba(241,196,15,0.6),
+        0 3px 10px rgba(0,0,0,0.2);
+}
+
+@keyframes cardWin {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* 卡牌翻转效果 */
+.card.flipping {
+    animation: cardFlip 0.6s ease-in-out;
+}
+
+@keyframes cardFlip {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(90deg); }
+    100% { transform: rotateY(0deg); }
+}
+
+/* 玩家位置 */
+.players-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.player-seat {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+}
+
+.player-info {
+    background: rgba(0,0,0,0.8);
+    padding: 6px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.player-info.current-player {
+    border-color: #ffd700;
+    box-shadow: 0 0 12px rgba(255,215,0,0.5);
+}
+
+.player-info.dealer {
+    border-color: #ff6b6b;
+}
+
+.player-avatar {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 3px;
+    line-height: 1;
+}
+
+.player-name {
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 0.8rem;
+}
+
+.player-chips {
+    color: #ffd700;
+    font-size: 0.75rem;
+}
+
+.player-bet {
+    background: rgba(255,215,0,0.2);
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-top: 3px;
+    border: 1px solid #ffd700;
+    font-size: 0.7rem;
+}
+
+.player-cards {
+    display: flex;
+    gap: 3px;
+}
+
+.player-status {
+    margin-top: 3px;
+    font-size: 0.65rem;
+    opacity: 0.8;
+}
+
+.player-status.folded {
+    color: #ff6b6b;
+}
+
+.player-status.all-in {
+    color: #ffd700;
+}
+
+/* 自己的手牌 */
+.player-hand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.hand-cards {
+    display: flex;
+    gap: 15px;
+}
+
+.hand-cards .card {
+    width: 60px;
+    height: 84px;
+}
+
+.hand-cards .card .card-content {
+    padding: 4px;
+}
+
+.hand-cards .card .card-rank {
+    font-size: 1.6em; /* 从1.4em增加到1.6em */
+}
+
+.hand-cards .card .card-suit {
+    font-size: 1.4em; /* 从1.2em增加到1.4em */
+    margin-top: 3px; /* 增加间距 */
+}
+
+.hand-cards .card .card-center {
+    font-size: 3em;
+}
+
+.hand-info {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+/* 操作按钮 */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 2fr;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.raise-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.raise-slider {
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+}
+
+.raise-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.raise-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 侧边栏 */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    max-height: calc(100vh - 20px); /* 适配屏幕高度，留出padding空间 */
+}
+
+.sidebar > div {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 聊天框 - 固定高度 */
+.chat-section {
+    height: min(400px, 40vh); /* 使用较小值：400px 或 40%视口高度 */
+    max-height: min(400px, 40vh);
+    min-height: min(300px, 30vh); /* 最小高度也自适应 */
+    flex: none;
+}
+
+.chat-header, .stats-header, .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: calc(100% - 45px); /* 减去 header 高度 */
+    min-height: 0;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    min-height: 0;
+    height: auto; /* 改为自动高度，让flex控制 */
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+
+.chat-message .sender {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.chat-message .timestamp {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    float: right;
+}
+
+.chat-input-group {
+    display: flex;
+    padding: 8px 10px;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.chat-input-group input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    font-size: 14px; /* 明确指定字体大小 */
+    min-width: 0; /* 确保在小屏幕下可以缩放 */
+}
+
+.preset-chat {
+    display: flex;
+    gap: 5px;
+    padding: 6px 10px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.preset-chat .preset-btn {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    min-width: auto;
+}
+
+/* 统计信息 - 固定高度 */
+.stats-section {
+    height: min(280px, 28vh); /* 使用较小值：280px 或 28%视口高度 */
+    max-height: min(280px, 28vh);
+    min-height: min(200px, 20vh); /* 最小高度自适应 */
+    flex: none;
+}
+
+.sidebar h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.sidebar > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-content, .history-content {
+    padding: 8px 12px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    height: calc(100% - 45px); /* 减去 header 高度 */
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+/* 玩家统计列表 */
+.players-stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: none;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.player-stats-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.player-stats-item.current-player {
+    border-left-color: #ffd700;
+    background: rgba(255,215,0,0.15);
+}
+
+.player-stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.player-stats-name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.player-stats-chips {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.player-stats-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.player-stat {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-stat-label {
+    opacity: 0.7;
+}
+
+.player-stat-value {
+    font-weight: bold;
+}
+
+.player-stat-value.positive {
+    color: #4CAF50;
+}
+
+.player-stat-value.negative {
+    color: #f44336;
+}
+
+.player-stat-value.neutral {
+    color: #ffd700;
+}
+
+/* 操作历史 */
+/* 操作历史 - 固定高度 */
+.history-section {
+    height: min(200px, 20vh); /* 使用较小值：200px 或 20%视口高度 */
+    max-height: min(200px, 20vh);
+    min-height: min(150px, 15vh); /* 最小高度自适应 */
+    flex: none;
+}
+
+.action-history {
+    max-height: none;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.action-item {
+    padding: 8px;
+    margin-bottom: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.action-item .player {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.action-item .action {
+    color: #fff;
+}
+
+.action-item .timestamp {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    float: right;
+}
+
+/* Toast 消息 */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+/* 模态框 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-width: 400px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content.large {
+    max-width: 480px;
+    width: 80%;
+    max-height: 85vh;
+    text-align: left;
+    padding: 12px; /* 从16px减少到12px */
+    font-size: 0.85rem; /* 从0.9rem减少到0.85rem */
+}
+
+.modal h2 {
+    margin-bottom: 8px; /* 从12px减少到8px */
+    font-size: 1.4rem; /* 从1.6rem减少到1.4rem */
+    text-align: center;
+}
+
+/* 获胜者展示区 */
+.winner-section {
+    background: rgba(255,215,0,0.2);
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    padding: 6px; /* 从10px减少到6px */
+    margin: 6px 0; /* 从10px减少到6px */
+    text-align: center;
+}
+
+.winner-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* 从10px减少到8px */
+    margin: 6px 0; /* 从8px减少到6px */
+    font-size: 0.8rem; /* 从0.85rem减少到0.8rem */
+}
+
+.winner-cards {
+    display: flex;
+    gap: 3px;
+}
+
+.winner-hand-type {
+    font-size: 0.9rem; /* 从1rem减少到0.9rem */
+    font-weight: bold;
+    color: #ffd700;
+    margin: 4px 0; /* 从6px减少到4px */
+}
+
+/* 获胜者最佳牌型显示 */
+.winner-best-hand {
+    margin-top: 6px; /* 从10px减少到6px */
+}
+
+.best-hand-title {
+    font-size: 0.8rem; /* 从0.9rem减少到0.8rem */
+    font-weight: bold;
+    margin-bottom: 6px; /* 从8px减少到6px */
+    color: #ffd700;
+    text-align: center;
+}
+
+.winner-best-hand-cards {
+    display: flex;
+    gap: 3px; /* 从4px减少到3px */
+    justify-content: center;
+    margin-bottom: 6px; /* 从8px减少到6px */
+}
+
+.winner-best-hand-cards .card {
+    position: relative;
+}
+
+/* 手牌标识 */
+.card.hand-card {
+    border: 2px solid #ff6b6b;
+    box-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
+}
+
+.card.hand-card::after {
+    content: 'H';
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* 公共牌标识 */
+.card.community-card {
+    border: 2px solid #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+.card.community-card::after {
+    content: 'C';
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* 图例说明 */
+.card-legend {
+    text-align: center;
+    margin-top: 3px; /* 从5px减少到3px */
+    font-size: 0.7rem; /* 从0.75rem减少到0.7rem */
+}
+
+.legend-hand {
+    color: #ff6b6b;
+    margin-right: 15px;
+}
+
+.legend-community {
+    color: #4CAF50;
+}
+
+/* 结算清单 */
+.round-settlement {
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    padding: 6px; /* 从8px减少到6px */
+    margin: 6px 0; /* 从8px减少到6px */
+    font-size: 0.75rem; /* 从0.8rem减少到0.75rem */
+}
+
+.settlement-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px; /* 从4px减少到3px */
+    margin: 1px 0; /* 从2px减少到1px */
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+
+.settlement-player {
+    font-weight: bold;
+}
+
+.settlement-change {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.settlement-change.positive {
+    color: #4CAF50;
+}
+
+.settlement-change.negative {
+    color: #f44336;
+}
+
+/* 所有玩家手牌展示 */
+.all-hands-display {
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+    padding: 6px; /* 从8px减少到6px */
+    margin: 6px 0; /* 从8px减少到6px */
+    font-size: 0.75rem; /* 从0.8rem减少到0.75rem */
+}
+
+/* 玩家网格布局 */
+.players-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 每行两列 */
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.player-hand-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px; /* 从6px减少到4px */
+    margin: 2px 0; /* 从4px减少到2px */
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    border-left: 3px solid transparent;
+}
+
+.player-hand-display.winner {
+    border-left-color: #ffd700;
+    background: rgba(255,215,0,0.2);
+}
+
+.player-hand-display.folded {
+    opacity: 0.6;
+    background: rgba(255,255,255,0.05);
+}
+
+.player-hand-info {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* 从10px减少到8px */
+}
+
+.player-hand-cards {
+    display: flex;
+    gap: 2px; /* 从3px减少到2px */
+}
+
+.player-hand-strength {
+    font-size: 0.7rem; /* 从0.8rem减少到0.7rem */
+    opacity: 0.8;
+}
+
+/* 确认区域 */
+.confirmation-section {
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    padding: 6px; /* 从8px减少到6px */
+    margin-top: 8px; /* 从10px减少到8px */
+    text-align: center;
+}
+
+.confirmation-status {
+    margin-bottom: 6px; /* 从8px减少到6px */
+    font-size: 0.8rem; /* 从0.9rem减少到0.8rem */
+}
+
+.confirmed-players {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px; /* 从4px减少到3px */
+    justify-content: center;
+    margin: 6px 0; /* 从8px减少到6px */
+}
+
+.confirmed-player {
+    background: rgba(76,175,80,0.8);
+    padding: 2px 5px; /* 从2px 6px调整为2px 5px */
+    border-radius: 12px;
+    font-size: 0.7rem; /* 从0.75rem减少到0.7rem */
+}
+
+.pending-player {
+    background: rgba(255,193,7,0.8);
+    color: #333;
+    padding: 2px 5px; /* 从2px 6px调整为2px 5px */
+    border-radius: 12px;
+    font-size: 0.7rem; /* 从0.75rem减少到0.7rem */
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    #game-screen {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+    }
+    
+    .sidebar {
+        flex-direction: row;
+        height: min(480px, 50vh); /* 进一步增加高度以适应更多内容 */
+        max-height: min(480px, 50vh);
+        min-height: min(420px, 42vh); /* 增加最小高度 */
+    }
+    
+    .sidebar > div {
+        flex: 1;
+        height: 100%;
+    }
+    
+    .chat-section {
+        flex: 1.5;
+        height: 100%;
+        max-height: 100%;
+        min-height: 100%;
+    }
+    
+    .stats-section {
+        height: 100%;
+        max-height: 100%;
+        min-height: 100%;
+    }
+    
+    .history-section {
+        height: 100%;
+        max-height: 100%;
+        min-height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .logo h1 {
+        font-size: 2rem;
+    }
+    
+    .form-group input {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .preset-messages {
+        grid-template-columns: 1fr;
+    }
+    
+    #game-screen {
+        padding: 5px;
+        gap: 5px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+    }
+    
+    .game-container {
+        padding: 10px;
+        order: 1; /* 游戏主界面在上方 */
+    }
+    
+    .sidebar {
+        order: 2; /* 侧边栏在下方 */
+        flex-direction: column;
+        height: min(2080px, 208vh); /* 增加到4倍高度：520px * 4 = 2080px，52vh * 4 = 208vh */
+        max-height: min(2080px, 208vh);
+        min-height: min(1920px, 192vh); /* 增加到4倍高度：480px * 4 = 1920px，48vh * 4 = 192vh */
+    }
+    
+    .sidebar > div {
+        height: calc(100% / 3); /* 每个区域占1/3高度 */
+        max-height: calc(100% / 3);
+        min-height: calc(100% / 3);
+    }
+    
+    .poker-table {
+        margin: 5px;
+        min-height: 260px; /* 减少游戏桌面高度 */
+    }
+    
+    /* 手机端社区牌优化 - 重新调整尺寸和字体比例 */
+    .community-cards {
+        padding: 8px; /* 从 6px 增加到 8px */
+        transform: translate(-50%, -55%); /* 保持位置 */
+        border-width: 2px; /* 恢复边框宽度 */
+    }
+    
+    .cards-container {
+        gap: 3px; /* 从 2px 增加到 3px */
+        margin-bottom: 10px; /* 从 8px 增加到 10px */
+    }
+    
+    .cards-container .card {
+        width: 30px; /* 从 26px 增加到 30px */
+        height: 42px; /* 从 38px 增加到 42px */
+        font-size: 10px; /* 从 8px 增加到 10px，提高可读性 */
+    }
+    
+    /* 优化手机端卡牌内部字体比例 */
+    .cards-container .card .card-rank {
+        font-size: 16px; /* 从14px进一步增加到16px，数字更大更清晰 */
+        font-weight: bold;
+    }
+    
+    .cards-container .card .card-suit {
+        font-size: 18px; /* 从16px增加到18px，花色图标更大 */
+        margin-top: 4px; /* 从2px增加到4px，进一步增加间距 */
+    }
+    
+    .stage-indicator {
+        padding: 6px 10px; /* 从 4px 8px 增加 */
+        font-size: 0.8rem; /* 从 0.75rem 增加到 0.8rem */
+    }
+    
+    /* 手机端玩家位置优化 - 进一步缩小 */
+    .player-seat {
+        min-width: 60px; /* 从 70px 缩小到 60px */
+    }
+    
+    .player-info {
+        padding: 3px; /* 从 4px 缩小到 3px */
+        font-size: 0.65rem; /* 从 0.7rem 缩小到 0.65rem */
+        min-width: 50px; /* 从 60px 缩小到 50px */
+    }
+    
+    .player-avatar {
+        font-size: 0.9rem; /* 从 1rem 缩小到 0.9rem */
+        margin-bottom: 1px; /* 从 2px 缩小到 1px */
+    }
+    
+    .player-name {
+        font-size: 0.65rem; /* 从 0.7rem 缩小到 0.65rem */
+        margin-bottom: 1px; /* 从 2px 缩小到 1px */
+    }
+    
+    .player-chips {
+        font-size: 0.6rem; /* 从 0.65rem 缩小到 0.6rem */
+    }
+    
+    .player-bet {
+        padding: 1px 3px; /* 从 2px 4px 缩小到 1px 3px */
+        font-size: 0.55rem; /* 从 0.6rem 缩小到 0.55rem */
+        margin-top: 1px; /* 从 2px 缩小到 1px */
+    }
+    
+    .player-cards .card {
+        width: 22px;
+        height: 32px;
+        font-size: 7px;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        padding: 8px;
+    }
+    
+    .raise-controls {
+        grid-column: 1 / -1;
+    }
+    
+    .top-info {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        text-align: center;
+        padding: 8px;
+    }
+    
+    .hand-cards .card {
+        width: 42px;
+        height: 60px;
+        font-size: 13px; /* 从11px增加到13px */
+    }
+    
+    .hand-cards .card .card-rank {
+        font-size: 16px; /* 增加手牌数字大小 */
+        font-weight: bold;
+    }
+    
+    .hand-cards .card .card-suit {
+        font-size: 18px; /* 增加手牌花色大小 */
+        margin-top: 3px; /* 增加间距 */
+    }
+    
+    /* 手机端庄家和盲注按钮优化 */
+    .dealer-button {
+        width: 16px;
+        height: 16px;
+        font-size: 7px;
+        top: -6px;
+        right: -6px;
+    }
+    
+    .blind-button {
+        width: 20px;
+        height: 10px;
+        font-size: 7px;
+        top: -5px;
+        right: -5px;
+    }
+    
+    .sidebar {
+        flex-direction: column;
+        height: 1280px; /* 增加到4倍高度：320px * 4 */
+        max-height: 1280px;
+        min-height: 1120px; /* 设置最小高度确保内容可见：280px * 4 */
+    }
+    
+    .sidebar > div {
+        height: calc(100% / 3);
+        max-height: calc(100% / 3);
+        min-height: calc(100% / 3);
+    }
+    
+    .chat-content {
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 45px); /* 使用灵活高度，减去header高度 */
+        min-height: 400px; /* 增加最小高度确保有足够显示空间 */
+    }
+    
+    .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 6px 8px;
+        min-height: 0;
+    }
+    
+    .chat-input-group {
+        padding: 6px 8px;
+        flex-shrink: 0;
+        display: flex;
+        gap: 8px;
+        background: rgba(0,0,0,0.2); /* 添加背景色以突出显示 */
+        border-top: 1px solid rgba(255,255,255,0.1); /* 添加顶部边框分隔 */
+    }
+    
+    .preset-chat {
+        padding: 6px 8px;
+        flex-shrink: 0;
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        background: rgba(0,0,0,0.15); /* 添加背景色 */
+        border-top: 1px solid rgba(255,255,255,0.05); /* 添加分隔线 */
+    }
+    
+    .preset-chat .preset-btn {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+    }
+    
+    /* 手机端模态框优化 */
+    .modal-content {
+        width: 95%;
+        max-width: none;
+        padding: 12px; /* 从15px减少到12px */
+        margin: 10px;
+        max-height: 88vh; /* 从85vh增加到88vh以容纳更多内容 */
+    }
+    
+    .modal-content.large {
+        width: 95%;
+        max-width: none;
+        padding: 8px; /* 从10px减少到8px */
+        max-height: 90vh; /* 从88vh增加到90vh */
+        font-size: 0.7rem; /* 从0.75rem减少到0.7rem */
+    }
+    
+    .modal h2 {
+        font-size: 1.2rem; /* 从1.3rem减少到1.2rem */
+        margin-bottom: 8px; /* 从10px减少到8px */
+    }
+    
+    /* 手机端统一牌面大小 - 768px屏幕 */
+    .modal-content.large .card {
+        width: 30px !important;
+        height: 42px !important;
+        font-size: 10px !important;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1;
+        position: relative;
+        overflow: hidden;
+        word-wrap: break-word;
+        white-space: nowrap;
+    }
+    
+    /* 自动缩放牌面内容以适应容器 */
+    .modal-content.large .card .card-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transform: scale(1);
+        transform-origin: center;
+    }
+    
+    .modal-content.large .card .card-rank {
+        font-size: 1.0em; /* 从0.9em进一步增加到1.0em */
+        line-height: 0.9;
+    }
+    
+    .modal-content.large .card .card-suit {
+        font-size: 1.1em; /* 从1.0em增加到1.1em */
+        line-height: 0.8;
+        margin-top: 3px; /* 从2px增加到3px，进一步增加间距 */
+    }
+    
+    /* 确保所有牌面区域的卡牌都使用统一大小 */
+    .winner-best-hand-cards .card,
+    .player-hand-cards .card,
+    .winner-cards .card {
+        width: 30px !important;
+        height: 42px !important;
+        font-size: 10px !important;
+    }
+
+    /* 手机端获胜者最佳牌型显示优化 */
+    .winner-best-hand-cards {
+        gap: 3px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    /* 手机端获胜者内容显示优化 - 内容合并减少分行 */
+    .winner-info {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        margin: 4px 0;
+    }
+    
+    .winner-info h3 {
+        font-size: 0.8rem;
+        margin: 0 6px 0 0;
+        display: inline-block;
+    }
+    
+    .winner-hand-type {
+        display: inline-block;
+        margin: 0 6px 0 0;
+        font-size: 0.7rem;
+    }
+    
+    .winner-info > div {
+        display: inline-block;
+        margin-right: 6px;
+    }
+    
+    /* 手机端所有玩家手牌显示优化 - 减少分行，合并内容 */
+    .player-hand-display {
+        flex-direction: row;
+        align-items: center;
+        padding: 3px;
+        margin: 1px 0;
+    }
+    
+    .player-hand-info {
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+    
+    .player-hand-info > div {
+        margin: 0;
+    }
+    
+    .player-hand-strength {
+        font-size: 0.65rem;
+        margin-left: 4px;
+        display: inline-block;
+    }
+    
+    .player-hand-cards {
+        gap: 1px;
+        margin-left: 4px;
+    }
+    
+    /* 手机端玩家网格优化 */
+    .players-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+    }
+    
+    .player-hand-display {
+        padding: 2px;
+        margin: 1px 0;
+        font-size: 0.65rem;
+    }
+    
+    .card.hand-card::after,
+    .card.community-card::after {
+        width: 10px;
+        height: 10px;
+        font-size: 6px;
+        top: -2px;
+        right: -2px;
+    }
+    
+    .best-hand-title {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .card-legend {
+        font-size: 0.65rem;
+        margin-top: 3px;
+    }
+    
+    .legend-hand {
+        margin-right: 10px;
+    }
+    
+    .winner-info {
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.75rem;
+    }
+    
+    .winner-hand-type {
+        font-size: 0.9rem;
+        margin: 3px 0;
+    }
+    
+    .player-hand-display {
+        flex-direction: column;
+        gap: 6px;
+        padding: 4px;
+    }
+    
+    .player-hand-info {
+        gap: 6px;
+    }
+    
+    .settlement-item {
+        flex-direction: column;
+        gap: 3px;
+        align-items: flex-start;
+        padding: 6px;
+    }
+    
+    .confirmation-section {
+        padding: 8px;
+    }
+    
+    .confirmed-players, .pending-player {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+    
+    /* 为统计和历史内容区域增加最小高度 */
+    .stats-content, .history-content {
+        min-height: 350px; /* 增加最小高度确保有足够显示空间 */
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 5px;
+    }
+    
+    .poker-table {
+        margin: 2px;
+        min-height: 200px; /* 减少游戏桌面高度 */
+    }
+    
+    /* 超小屏幕社区牌 - 优化尺寸和字体 */
+    .community-cards {
+        padding: 6px; /* 适中的内边距 */
+        transform: translate(-50%, -50%); /* 居中位置 */
+        border-width: 2px; /* 保持边框可见 */
+    }
+    
+    .cards-container {
+        gap: 2px; /* 适中的间距 */
+        margin-bottom: 8px;
+    }
+    
+    .cards-container .card {
+        width: 26px; /* 从 22px 增加到 26px，更易识别 */
+        height: 36px; /* 从 32px 增加到 36px */
+        font-size: 9px; /* 从 7px 增加到 9px，提高可读性 */
+    }
+    
+    /* 优化超小屏幕卡牌内部字体比例 */
+    .cards-container .card .card-rank {
+        font-size: 14px; /* 从12px进一步增加到14px，数字更清晰 */
+        font-weight: bold;
+    }
+    
+    .cards-container .card .card-suit {
+        font-size: 15px; /* 从13px增加到15px，花色图标更清晰 */
+        margin-top: 3px; /* 从2px增加到3px，进一步增加间距 */
+    }
+    
+    .stage-indicator {
+        padding: 4px 8px;
+        font-size: 0.75rem; /* 保持可读性 */
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+        padding: 6px;
+        gap: 4px;
+    }
+    
+    .raise-input-group {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    /* 超小屏幕玩家位置优化 - 最小尺寸 */
+    .player-seat {
+        min-width: 45px; /* 从 55px 缩小到 45px */
+    }
+    
+    .player-info {
+        padding: 2px; /* 从 3px 缩小到 2px */
+        font-size: 0.6rem; /* 从 0.65rem 缩小到 0.6rem */
+        min-width: 40px; /* 从 50px 缩小到 40px */
+    }
+    
+    .player-avatar {
+        font-size: 0.8rem; /* 从 0.9rem 缩小到 0.8rem */
+        margin-bottom: 0px;
+    }
+    
+    .player-name {
+        font-size: 0.55rem; /* 从 0.6rem 缩小到 0.55rem */
+        margin-bottom: 0px;
+    }
+    
+    .player-chips {
+        font-size: 0.55rem; /* 从 0.6rem 缩小到 0.55rem */
+    }
+    
+    .player-bet {
+        padding: 1px 2px; /* 进一步缩小内边距 */
+        font-size: 0.5rem; /* 进一步缩小字体 */
+        margin-top: 0px;
+    }
+    
+    .player-cards .card {
+        width: 16px; /* 从 18px 缩小到 16px */
+        height: 22px; /* 从 26px 缩小到 22px */
+        font-size: 5px; /* 从 6px 缩小到 5px */
+    }
+    
+    .dealer-button {
+        width: 14px; /* 进一步缩小 */
+        height: 14px; /* 进一步缩小 */
+        font-size: 6px; /* 进一步缩小字体 */
+        top: -6px; /* 调整位置 */
+        right: -6px; /* 右上角定位 */
+    }
+    
+    .hand-cards .card {
+        width: 38px;
+        height: 54px;
+        font-size: 12px; /* 从10px增加到12px */
+    }
+    
+    .hand-cards .card .card-rank {
+        font-size: 14px; /* 增加手牌数字大小 */
+        font-weight: bold;
+    }
+    
+    .hand-cards .card .card-suit {
+        font-size: 16px; /* 增加手牌花色大小 */
+        margin-top: 3px; /* 增加间距 */
+    }
+    
+    /* 超小屏幕庄家和盲注按钮进一步缩小 */
+    .blind-button {
+        width: 18px;
+        height: 9px;
+        font-size: 6px;
+        top: -4px;
+        right: -4px;
+    }
+    
+    .top-info {
+        padding: 6px;
+    }
+    
+    .amount {
+        font-size: 1.1rem;
+    }
+    
+    .chat-content {
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 45px); /* 使用灵活高度 */
+        min-height: 500px; /* 增加最小高度确保有足够显示空间 */
+    }
+    
+    .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 6px 8px;
+        min-height: 0;
+    }
+    
+    .chat-input-group {
+        padding: 6px 8px;
+        flex-shrink: 0;
+        display: flex;
+        gap: 6px;
+        background: rgba(0,0,0,0.2); /* 添加背景色以突出显示 */
+        border-top: 1px solid rgba(255,255,255,0.1); /* 添加顶部边框分隔 */
+    }
+    
+    .preset-chat {
+        padding: 4px 6px;
+        flex-shrink: 0;
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        background: rgba(0,0,0,0.15); /* 添加背景色 */
+        border-top: 1px solid rgba(255,255,255,0.05); /* 添加分隔线 */
+    }
+    
+    .preset-chat .preset-btn {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+    }
+    
+    .sidebar {
+        order: 2; /* 改为在下方，游戏界面在上方 */
+        height: 1600px; /* 调整为4倍高度：400px * 4 */
+        max-height: 1600px;
+        min-height: 1280px; /* 设置合理的最小高度：320px * 4 */
+    }
+    
+    .game-container {
+        order: 1; /* 游戏界面在上方 */
+    }
+    
+    .sidebar > div {
+        height: calc(100% / 3);
+        max-height: calc(100% / 3);
+        min-height: calc(100% / 3);
+    }
+    
+    /* 超小屏幕模态框优化 */
+    .modal-content {
+        padding: 6px; /* 从8px减少到6px */
+        margin: 4px;
+    }
+    
+    .modal-content.large {
+        padding: 4px; /* 从6px减少到4px */
+        font-size: 0.65rem; /* 从0.7rem减少到0.65rem */
+        max-height: 92vh; /* 从90vh增加到92vh */
+    }
+    
+    .modal h2 {
+        font-size: 1rem; /* 从1.1rem减少到1rem */
+        margin-bottom: 6px; /* 从8px减少到6px */
+    }
+    
+    .winner-info {
+        gap: 4px;
+        font-size: 0.7rem;
+    }
+    
+    /* 超小屏幕统一牌面大小 - 480px屏幕 */
+    .modal-content.large .card {
+        width: 28px !important;
+        height: 38px !important;
+        font-size: 9px !important;
+        border-radius: 3px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1;
+        position: relative;
+        overflow: hidden;
+        word-wrap: break-word;
+        white-space: nowrap;
+    }
+    
+    /* 超小屏幕自动缩放牌面内容 */
+    .modal-content.large .card .card-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transform: scale(0.9);
+        transform-origin: center;
+    }
+    
+    .modal-content.large .card .card-rank {
+        font-size: 0.9em; /* 从0.8em进一步增加到0.9em */
+        line-height: 0.8;
+    }
+    
+    .modal-content.large .card .card-suit {
+        font-size: 1.0em; /* 从0.9em增加到1.0em */
+        line-height: 0.7;
+        margin-top: 3px; /* 从2px增加到3px，进一步增加间距 */
+    }
+    
+    /* 确保所有牌面区域的卡牌都使用统一大小 */
+    .winner-best-hand-cards .card,
+    .player-hand-cards .card,
+    .winner-cards .card {
+        width: 28px !important;
+        height: 38px !important;
+        font-size: 9px !important;
+    }
+    
+    /* 超小屏幕所有玩家手牌显示进一步优化 */
+    .player-hand-display {
+        padding: 2px;
+        margin: 0.5px 0;
+        flex-wrap: wrap;
+    }
+    
+    .player-hand-info {
+        gap: 3px;
+        width: 100%;
+    }
+    
+    .player-hand-info strong {
+        font-size: 0.65rem;
+    }
+    
+    .player-hand-strength {
+        font-size: 0.6rem;
+        margin-left: 2px;
+    }
+    
+    /* 超小屏幕玩家网格进一步优化 */
+    .players-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        margin-top: 4px;
+    }
+    
+    .player-hand-display {
+        padding: 1px;
+        margin: 0.5px 0;
+        font-size: 0.6rem;
+        border-radius: 3px;
+    }
+    
+    .player-hand-info {
+        gap: 2px;
+        width: 100%;
+    }
+    
+    .player-hand-info strong {
+        font-size: 0.6rem;
+    }
+    
+    .winner-hand-type {
+        font-size: 0.8rem;
+        margin: 2px 0;
+    }
+    
+    /* 超小屏幕获胜者最佳牌型显示优化 */
+    .winner-best-hand-cards {
+        gap: 1px;
+    }
+    
+    .winner-best-hand-cards .card {
+        width: 20px;
+        height: 28px;
+        font-size: 7px;
+    }
+    
+    .card.hand-card::after,
+    .card.community-card::after {
+        width: 8px;
+        height: 8px;
+        font-size: 5px;
+        top: -1px;
+        right: -1px;
+    }
+    
+    .best-hand-title {
+        font-size: 0.7rem;
+        margin-bottom: 4px;
+    }
+    
+    .card-legend {
+        font-size: 0.6rem;
+        margin-top: 2px;
+    }
+    
+    .legend-hand {
+        margin-right: 8px;
+    }
+    
+    .all-hands-display {
+        padding: 6px;
+        margin: 6px 0;
+    }
+    
+    .round-settlement {
+        padding: 6px;
+        margin: 6px 0;
+    }
+    
+    .confirmation-section {
+        padding: 6px;
+        margin-top: 8px;
+    }
+    
+    .confirmed-player, .pending-player {
+        font-size: 0.65rem;
+        padding: 1px 4px;
+    }
+    
+    /* 为统计和历史内容区域增加最小高度 */
+    .stats-content, .history-content {
+        min-height: 450px; /* 增加最小高度确保有足够显示空间 */
+    }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+/* 动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* 特殊效果 */
+.dealer-button {
+    position: absolute;
+    width: 20px; /* 从24px缩小到20px */
+    height: 20px; /* 从24px缩小到20px */
+    background: #ff6b6b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 8px; /* 从10px缩小到8px */
+    color: white;
+    box-shadow: 0 2px 6px rgba(255,107,107,0.4);
+    top: -8px; /* 从-12px调整到-8px */
+    right: -8px; /* 改为右上角定位 */
+    transform: none; /* 移除transform */
+}
+
+.winner-highlight {
+    animation: pulse 1s ease-in-out 3;
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 20px rgba(255,215,0,0.6) !important;
+}
+
+/* 摊牌结果样式 */
+.hand-results {
+    padding: 15px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.player-result {
+    padding: 8px;
+    margin: 5px 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    border-left: 3px solid #ffd700;
+}
+
+/* 最终统计样式 */
+.final-stats {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.player-final-stat {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 5px 15px;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    align-items: center;
+}
+
+.player-final-stat .rank {
+    grid-row: 1 / -1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    width: 40px;
+    text-align: center;
+}
+
+.player-final-stat .player-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.player-final-stat .chips {
+    text-align: right;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.player-final-stat .stats {
+    grid-column: 2 / -1;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Toast 消息类型样式 */
+.toast.success {
+    background: rgba(76, 175, 80, 0.9);
+}
+
+.toast.error {
+    background: rgba(244, 67, 54, 0.9);
+}
+
+.toast.warning {
+    background: rgba(255, 193, 7, 0.9);
+    color: #333;
+}
+
+.toast.info {
+    background: rgba(33, 150, 243, 0.9);
+}
+
+/* 大盲小盲按钮样式 */
+.blind-button {
+    position: absolute;
+    top: -6px; /* 保持在右上角 */
+    right: -6px; /* 改为右上角定位 */
+    width: 24px; /* 从28px缩小到24px */
+    height: 12px; /* 从14px缩小到12px */
+    background: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 6px; /* 从7px调整到6px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px; /* 从9px缩小到8px */
+    font-weight: bold;
+    z-index: 2;
+    font-family: '微软雅黑', Arial, sans-serif;
+}
+
+.blind-button.small-blind {
+    background: rgba(255, 193, 7, 0.9); /* 黄色 */
+    color: #333;
+}
+
+.blind-button.big-blind {
+    background: rgba(220, 53, 69, 0.9); /* 红色 */
+    color: white;
+}
+
+/* 玩家实时状态显示 */
+.player-status {
+    font-size: 8px;
+    color: #00ff00;
+    font-weight: bold;
+    text-align: center;
+    animation: pulse 1.5s infinite;
+    background: rgba(0, 255, 0, 0.1);
+    border-radius: 6px;
+    padding: 1px 3px;
+    margin-top: 2px;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* 房间号显示样式 */
+.room-id {
+    font-size: 12px;
+    color: #fff;
+    background: rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.room-id .label {
+    color: #ccc;
+    margin-right: 4px;
+}
+
+.room-id #room-id-display {
+    color: #fff;
+    font-weight: bold;
+}

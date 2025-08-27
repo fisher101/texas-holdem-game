@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德州扑克 - 局域网对战</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="logo">
+            <h1>🎰 德州扑克</h1>
+            <p>局域网多人对战</p>
+        </div>
+        
+        <div class="join-form">
+            <div class="form-group">
+                <label for="playerName">玩家昵称:</label>
+                <input type="text" id="playerName" placeholder="请输入您的昵称" maxlength="20">
+            </div>
+            
+            <div class="form-group">
+                <label for="gameId">房间号:</label>
+                <input type="text" id="gameId" placeholder="输入房间号或留空自动生成" maxlength="10">
+            </div>
+            
+            <button id="joinBtn" class="btn btn-primary">加入游戏</button>
+        </div>
+
+        <!-- 房间状态清单 -->
+        <div class="room-list-section">
+            <h3>🏠 活跃房间</h3>
+            <div id="room-list" class="room-list">
+                <div class="no-rooms">暂无活跃房间</div>
+            </div>
+            <button id="refreshRoomsBtn" class="btn btn-secondary btn-small">刷新房间</button>
+        </div>
+    </div>
+
+    <div id="game-screen" style="display: none;">
+        <!-- 游戏主界面 -->
+        <div class="game-container">
+            <!-- 顶部信息栏 -->
+            <div class="top-info">
+                <div class="pot-info">
+                    <span class="label">底池:</span>
+                    <span id="pot-amount" class="amount">0</span>
+                </div>
+                <div class="game-info">
+                    <div class="room-id">
+                        <span class="label">房间号:</span>
+                        <span id="room-id-display">-</span>
+                    </div>
+                    <span id="game-stage">等待开始</span>
+                    <div class="game-controls">
+                        <button id="startGameBtn" class="btn btn-small" style="display: none;">开始游戏</button>
+                        <button id="leaveRoomBtn" class="btn btn-secondary btn-small">离开房间</button>
+                    </div>
+                </div>
+                <div class="current-bet">
+                    <span class="label">当前注额:</span>
+                    <span id="current-bet" class="amount">0</span>
+                </div>
+            </div>
+
+            <!-- 游戏桌面 -->
+            <div class="poker-table">
+                <!-- 社区牌区域 -->
+                <div class="community-cards">
+                    <div class="cards-container">
+                        <div class="card empty" data-index="0"></div>
+                        <div class="card empty" data-index="1"></div>
+                        <div class="card empty" data-index="2"></div>
+                        <div class="card empty" data-index="3"></div>
+                        <div class="card empty" data-index="4"></div>
+                    </div>
+                    <div class="stage-indicator">
+                        <span id="stage-text">等待开始</span>
+                    </div>
+                </div>
+
+                <!-- 玩家位置 -->
+                <div id="players-container" class="players-container">
+                    <!-- 玩家位置将通过JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <!-- 自己的手牌 -->
+            <div class="player-hand">
+                <div class="hand-cards">
+                    <div class="card empty" id="hand-card-1"></div>
+                    <div class="card empty" id="hand-card-2"></div>
+                </div>
+                <div class="hand-info">
+                    <span id="hand-strength"></span>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="action-buttons">
+                <button id="foldBtn" class="btn btn-secondary">弃牌 (Fold)</button>
+                <button id="checkBtn" class="btn btn-info">过牌 (Check)</button>
+                <button id="callBtn" class="btn btn-success">跟注 (Call) <span id="call-amount">0</span></button>
+                
+                <div class="raise-controls">
+                    <input type="range" id="raiseSlider" min="0" max="1000" value="20" class="raise-slider">
+                    <div class="raise-input-group">
+                        <input type="number" id="raiseAmount" value="20" min="0" max="1000" class="raise-input">
+                        <button id="raiseBtn" class="btn btn-warning">加注 (Raise)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <!-- 聊天框 -->
+            <div class="chat-section">
+                <div class="chat-header">
+                    <h3>💬 聊天</h3>
+                    <button id="toggleChat" class="toggle-btn">-</button>
+                </div>
+                <div class="chat-content">
+                    <div id="chat-messages" class="chat-messages"></div>
+                    <div class="chat-input-group">
+                        <input type="text" id="chatInput" placeholder="输入消息..." maxlength="100">
+                        <button id="sendChatBtn" class="btn btn-small">发送</button>
+                    </div>
+                    <div class="preset-chat">
+                        <button class="preset-btn" data-message="快点！等到花儿也谢了~">⏰</button>
+                        <button class="preset-btn" data-message="这把牌不错啊">👍</button>
+                        <button class="preset-btn" data-message="我觉得你在诈唬">🤔</button>
+                        <button class="preset-btn" data-message="好牌！">🔥</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 统计信息 -->
+            <div class="stats-section">
+                <div class="stats-header">
+                    <h3>📊 玩家统计</h3>
+                    <button id="toggleStats" class="toggle-btn">-</button>
+                </div>
+                <div class="stats-content">
+                    <div id="players-stats-list" class="players-stats-list">
+                        <!-- 玩家统计将在这里显示 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作历史 -->
+            <div class="history-section">
+                <div class="history-header">
+                    <h3>📜 操作记录</h3>
+                    <button id="toggleHistory" class="toggle-btn">-</button>
+                </div>
+                <div class="history-content">
+                    <div id="action-history" class="action-history"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 消息 -->
+    <div id="toast" class="toast"></div>
+
+    <!-- 游戏结束弹窗 -->
+    <div id="game-end-modal" class="modal">
+        <div class="modal-content">
+            <h2>🎉 游戏结束</h2>
+            <div id="game-result"></div>
+            <button id="new-game-btn" class="btn btn-primary">开始新局</button>
+        </div>
+    </div>
+
+    <!-- 每轮结算弹窗 -->
+    <div id="round-result-modal" class="modal">
+        <div class="modal-content large">
+            <h2 id="round-result-title">🏆 本轮结果</h2>
+            
+            <div id="winner-section" class="winner-section">
+                <!-- 获胜者信息 -->
+            </div>
+            
+            <div id="round-settlement" class="round-settlement">
+                <!-- 结算清单 -->
+            </div>
+            
+            <div id="all-hands-display" class="all-hands-display">
+                <!-- 所有玩家手牌展示 -->
+            </div>
+            
+            <div class="confirmation-section">
+                <div id="confirmation-status" class="confirmation-status">
+                    等待所有玩家确认...
+                </div>
+                <button id="confirm-round-btn" class="btn btn-primary">确认结果</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
